@@ -3,6 +3,8 @@
 @import "./variables";
 @import "./mixins";
 @import "./reset";
+@import "../node_modules/hamburgers/_sass/hamburgers/hamburgers.scss";
+@import "../node_modules/hamburgers/_sass/hamburgers/base";
 //  == /import ==
 
 // == common ==
@@ -52,10 +54,12 @@ body {
   }
 
   &-navbar {
+    @include padding-top;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    @include padding-top;
+    
+    
 
     &__logo {
       font-weight: bold;
@@ -74,9 +78,9 @@ body {
             font-size: 18px;
             line-height: 22px;
             padding: 10px 10px;
-            transition: .2s linear;
-            
-            &:hover{
+            transition: 0.2s linear;
+
+            &:hover {
               background: $color-brown;
               border-radius: 5px;
             }
@@ -85,6 +89,27 @@ body {
 
         li + li {
           margin-left: 60px;
+        }
+      }
+
+      @media (max-width: 900px) {
+        display: none;
+      }
+
+      &.active {
+        display: block;
+        position: absolute;
+        top: 0;
+        background: $color-semibrown;
+        width: 100%;
+
+        ul {
+          flex-direction: column;
+          align-items: center;
+
+          li{
+            margin: 20px;
+          }
         }
       }
     }
@@ -118,6 +143,19 @@ body {
           text-decoration: underline;
         }
       }
+    }
+  }
+
+  .hamburger {
+    position: relative;
+    z-index: 10;
+
+    @media (max-width: 900px) {
+      display: block;
+    }
+
+    @media (min-width: 901px) {
+      display: none;
     }
   }
 }
@@ -160,7 +198,7 @@ body {
     &-photo {
       padding-right: 125px;
 
-      img{
+      img {
         width: 100%;
         height: auto;
       }
@@ -193,7 +231,6 @@ body {
 
       .progress {
         width: 446px;
-        max-width: 100%;
         height: 24px;
         background-color: $color-semibrown;
         position: relative;
@@ -202,7 +239,6 @@ body {
           content: "";
           position: absolute;
           width: 381px;
-          max-width: 100%;
           height: 24px;
           background-color: $color-brown;
         }
@@ -269,7 +305,7 @@ body {
         margin-right: 30px;
       }
 
-      img{
+      img {
         width: 100%;
         height: auto;
       }
@@ -284,10 +320,10 @@ body {
   padding-bottom: 140px;
   background: $color-pink;
 
-  .section-inner{
+  .section-inner {
     position: relative;
 
-    &::before{
+    &::before {
       content: url(../images/up.svg);
       position: absolute;
       right: 0;
@@ -313,14 +349,14 @@ body {
       color: $color-black;
       font-size: 18px;
       line-height: 22px;
-      transition: all .2s ease-in-out;
+      transition: all 0.2s ease-in-out;
 
-      &:hover{
+      &:hover {
         color: $color-brown;
       }
     }
 
-    li + li{
+    li + li {
       margin-top: 14px;
     }
 
